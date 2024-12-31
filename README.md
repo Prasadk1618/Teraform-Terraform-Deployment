@@ -1,10 +1,10 @@
-README: Deploying a Flask Application on AWS EC2 using Terraform
+# Deploying a Flask Application on AWS EC2 using Terraform
 
-Overview
 
-This repository contains Terraform code to provision AWS infrastructure and deploy a Flask-based HTTP service. The service is hosted on an EC2 instance with access to S3, following the principle of least privilege using an IAM role.
 
-Task Summary
+### This repository contains Terraform code to provision AWS infrastructure and deploy a Flask-based HTTP service. The service is hosted on an EC2 instance with access to S3, following the principle of least privilege using an IAM role.
+
+### Task Summary
 
 Configured AWS CLI to interact with AWS services.
 
@@ -24,9 +24,9 @@ Configure security groups.
 
 Deploy the Flask application.
 
-Infrastructure Components
+### Infrastructure Components
 
-AWS Resources Created:
+### AWS Resources Created:
 
 IAM Role
 
@@ -56,7 +56,7 @@ Output
 
 Displays the public IP address of the EC2 instance upon successful deployment.
 
-Prerequisites
+### Prerequisites
 
 AWS CLI installed and configured.
 
@@ -66,14 +66,15 @@ Flask application code (app.py) available in the project directory.
 
 SSH key pair created in AWS (kubernet used in this example).
 
-Deployment Steps
+### Deployment Steps
 
-1. Clone the Repository
-
+### 1. Clone the Repository
+```bash
 git clone <repository-url>
 cd <repository-folder>
+```
 
-2. Update Variables
+### 2. Update Variables
 
 Edit main.tf to update values such as:
 
@@ -81,43 +82,44 @@ AWS region (ap-south-1 for Mumbai).
 
 Key name (kubernet for SSH access).
 
-3. Initialize Terraform
+### 3. Initialize Terraform
 
 Run the following command to initialize the Terraform configuration:
 
+```bash
 terraform init
-
-4. Plan the Deployment
+```
+### 4. Plan the Deployment
 
 Generate an execution plan to preview the resources that will be created:
-
+```bash
 terraform plan
-
-5. Apply the Deployment
+```
+### 5. Apply the Deployment
 
 Provision the infrastructure and deploy the Flask application:
-
+```bash
 terraform apply
-
+```
 6. Verify the Deployment
 
 Copy the public IP address displayed in the Terraform output.
 
 Access the Flask application in a web browser:
-
+```bash
 http://<PUBLIC_IP>:5000
-
-Flask Application (app.py)
+```
+### Flask Application (app.py)
 
 The Flask application code (app.py) is included in the deployment script. It provides an HTTP service running on port 5000.
 
-Clean Up
+### Clean Up
 
 To destroy the infrastructure created by this deployment, run:
-
+```bash
 terraform destroy
-
-Design Decisions
+```
+### Design Decisions
 
 IAM Role: Used an IAM role for the EC2 instance to securely access S3.
 
@@ -125,14 +127,3 @@ Security Groups: Restricted HTTP and SSH access to essential ports.
 
 User Data Script: Automated the installation of Flask and application deployment.
 
-Challenges and Assumptions
-
-Ensuring that the IAM role adheres to the principle of least privilege.
-
-Validating the Flask application runs without manual intervention post-deployment.
-
-Assumes app.py is available in the project directory.
-
-Contact
-
-For any issues or questions, please open a GitHub issue or contact Prasad.
